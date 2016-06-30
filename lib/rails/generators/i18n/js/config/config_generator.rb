@@ -12,7 +12,7 @@ module I18n
       DESC
 
       def copy_initializer_file
-        copy_file "i18n-js.yml", "config/i18n-js.yml"
+        copy_file 'i18n-js.yml', 'config/i18n-js.yml'
       end
     end
   end

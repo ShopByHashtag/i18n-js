@@ -1,3 +1,5 @@
+require 'airbrake'
+
 module I18n
   module JS
     class Middleware
@@ -58,9 +60,13 @@ module I18n
         valid_cache.push ::I18n.load_path.uniq.size == cache.size
 
         ::I18n.load_path.each do |path|
+          begin
           changed_at = File.mtime(path).to_i
           valid_cache.push changed_at == cache[path]
           new_cache[path] = changed_at
+          rescue => e
+            Airbrake.notify(e)
+          end
         end
 
         return if valid_cache.all?
