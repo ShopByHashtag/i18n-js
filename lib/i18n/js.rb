@@ -2,6 +2,7 @@ require "yaml"
 require "i18n"
 require "fileutils"
 require "i18n/js/utils"
+require 'airbrake'
 
 module I18n
   module JS
@@ -130,11 +131,11 @@ module I18n
 
     # Filter translations according to the specified scope.
     def self.filter(translations, scopes)
-      scopes = scopes.split(".") if scopes.is_a?(String)
+      scopes = scopes.split('.') if scopes.is_a?(String)
       scopes = scopes.clone
       scope = scopes.shift
 
-      if scope == "*"
+      if scope == '*'
         results = {}
         translations.each do |scope, translations|
           tmp = scopes.empty? ? translations : filter(translations, scopes)

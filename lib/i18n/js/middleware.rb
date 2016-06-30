@@ -1,8 +1,8 @@
-require 'airbrake'
-
 module I18n
 	module JS
 		class Middleware
+			require 'airbrake'
+
 			def initialize(app)
 				@app = app
 				clear_cache

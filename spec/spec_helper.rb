@@ -1,5 +1,6 @@
 require "i18n"
 require "json"
+require 'airbrake'
 
 require "active_support/all"
 require "i18n/js"
